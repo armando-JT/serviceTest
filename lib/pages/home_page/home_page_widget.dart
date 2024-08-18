@@ -1,9 +1,20 @@
+
+import 'package:android_intent/android_intent.dart';
+import 'package:flutter/services.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
+import 'package:device_apps/device_apps.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:android_intent/android_intent.dart';
+
+
+
+
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
@@ -82,8 +93,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 40.0, 0.0, 40.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            //TODO
+                            const channel = MethodChannel('channel-name');
+                            final String result = await channel.invokeMethod('getNetworkStatus');
+                            try {
+                              final String result = await channel.invokeMethod('getNetworkStatus');
+                              setState(() {
+                                var networkStatus = result;
+                              });
+                            } on PlatformException catch (e) {
+                              setState(() {
+                                var networkStatus = "Failed to get network status: '${e.message}'.";
+                              });
+                            }
+
+
+
+
                           },
                           text: 'Button',
                           options: FFButtonOptions(
