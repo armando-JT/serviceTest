@@ -16,6 +16,7 @@ import 'package:android_intent/android_intent.dart';
 
 
 
+
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
 
@@ -25,6 +26,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
+  final printerChannel = MethodChannel('com.mycompany.serviceTest/printer');
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -95,18 +97,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             //TODO
-                            const channel = MethodChannel('channel-name');
-                            final String result = await channel.invokeMethod('getNetworkStatus');
-                            try {
-                              final String result = await channel.invokeMethod('getNetworkStatus');
-                              setState(() {
-                                var networkStatus = result;
-                              });
-                            } on PlatformException catch (e) {
-                              setState(() {
-                                var networkStatus = "Failed to get network status: '${e.message}'.";
-                              });
-                            }
+
+                              // AndroidIntent intent = AndroidIntent(action: "action_view", data: "com.google.android.youtube");
+                              // intent.launch();
+
+
+                              getPrinter();
+                            
+
+
 
 
 
@@ -161,5 +160,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
       ),
     );
+  }
+
+  Future getPrinter() async {
+    final String aString =
+      await printerChannel.invokeMethod("getPrinter");
   }
 }
