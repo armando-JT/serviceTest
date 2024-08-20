@@ -70,18 +70,10 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-    // ...
-}
-
 flutter {
     source '../..'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
 }
