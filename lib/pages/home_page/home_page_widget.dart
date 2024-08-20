@@ -99,11 +99,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           onPressed: () async {
                             //TODO
 
+
                               // AndroidIntent intent = AndroidIntent(action: "action_view", data: "com.google.android.youtube");
                               // intent.launch();
 
 
                               getPrinter();
+
+                              var something = "Can you see this?";
                             
 
 
