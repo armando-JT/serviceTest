@@ -89,18 +89,10 @@ String formatNumber(
           formattedValue = NumberFormat.decimalPattern().format(value);
           break;
         case DecimalType.periodDecimal:
-          if (currency != null) {
-            formattedValue = NumberFormat('#,##0.00', 'en_US').format(value);
-          } else {
-            formattedValue = NumberFormat.decimalPattern('en_US').format(value);
-          }
+          formattedValue = NumberFormat.decimalPattern('en_US').format(value);
           break;
         case DecimalType.commaDecimal:
-          if (currency != null) {
-            formattedValue = NumberFormat('#,##0.00', 'es_PA').format(value);
-          } else {
-            formattedValue = NumberFormat.decimalPattern('es_PA').format(value);
-          }
+          formattedValue = NumberFormat.decimalPattern('es_PA').format(value);
           break;
       }
       break;
